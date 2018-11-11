@@ -27,9 +27,7 @@ public class CollectionTestSuite {
         //Then
         even1.exterminate(newlist1);
         System.out.println("ArrayList size after method exterminate:  " + even1.getSize() );
-        for(int i = 0 ; i < even1.getSize() ; i++){
-            Assert.assertEquals(test1.get(i), even1.getEvenNumber(i));
-        }
+        Assert.assertEquals(0, even1.getSize());
         System.out.println();
 
     }
