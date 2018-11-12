@@ -5,23 +5,10 @@ import  com.kodilla.testing.shape.Triangle;
 
 public class ShapeCollector {
     private Shape shape;
-    private Shape exampleShape;
     private ArrayList<Shape> collection = new ArrayList<Shape>();
 
     public ShapeCollector (){
         }
-
-    public ShapeCollector (Shape shape){
-        this.shape = shape;
-    }
-
-    public Shape getShape() {
-        return shape;
-    }
-
-    public ArrayList<Shape> getCollection() {
-        return collection;
-    }
 
     public void addFigure(Shape shape) {
         collection.add(shape);
@@ -39,13 +26,13 @@ public class ShapeCollector {
 
     public Shape getFigure(int n){
         if(n >= 0 && n < collection.size()){
-             exampleShape = collection.get(n);
+             shape = collection.get(n);
         }
-        return exampleShape;
+        return shape;
     }
 
-    public void showFigures(){
-
+    public int showFigures(){
+        System.out.println("The size of the collection of figures is: " + collection.size());;
+        return collection.size();
     }
-
 }
