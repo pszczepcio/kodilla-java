@@ -17,19 +17,14 @@ public class CollectionTestSuite {
 
         @Test
         public void testOddNumbersExterminatorEmptyList(){
-            ArrayList<Integer> newlist1 = new ArrayList<Integer>();
             //Given
+            ArrayList<Integer> newlist1 = new ArrayList<Integer>();
             OddNumbersExterminator even1 = new OddNumbersExterminator();
             //When
-            ArrayList<Integer> test1 = new ArrayList<Integer>();
-            for(Integer i = 0 ; i < 100 ; i++){
-                test1.add(i);
-            }
-            //Then
             even1.exterminate(newlist1);
-            System.out.println("ArrayList size after method exterminate:  " + even1.getSize() );
-            Assert.assertEquals(0, even1.getSize());
-            System.out.println();
+            System.out.println("ArrayList size after method exterminate: " + even1.getSize());
+            //Then
+            Assert.assertEquals(0,even1.getSize());
 
         }
         @Test
