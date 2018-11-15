@@ -11,9 +11,6 @@ public class StatisticalCalculations {
     private double averageNumberOfComentsPerUser;
     private double averageNumberOfCommentsPerPost;
 
-    public StatisticalCalculations(Statistics statistics) {
-        this.statistics = statistics;
-    }
 
     public void calculateAdvStatistics(Statistics statistics) {
 
