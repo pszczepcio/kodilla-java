@@ -87,79 +87,39 @@ public class BookDirectoryTestSuite {
     }
 
     @Test
-    public void testListBooksInHandsOfFor5Books(){
-        //Given
-        LibraryDatabase libraryDatabasemock = mock(LibraryDatabase.class);
-        BookLibrary bookLibrary = new BookLibrary(libraryDatabasemock);
-        List<Book> resultListOfBooks = generateListOfNBooks(10);
-        LibraryUser user1 = new LibraryUser("Piotrek","Szczepanski","85051916111");
-        when(libraryDatabasemock.listBooksWithCondition(anyString())).thenReturn(resultListOfBooks);
+    public void testListBooksInHandsOf5Books(){
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        LibraryUser user = new LibraryUser("First","Last","pesel");
+        List<Book> bookList = generateListOfNBooks(5);
 
-        List<Book> bookToRent2 = new ArrayList<Book>(); // List of books to order
-        Book book1 = new Book("Title 1","Author 1",1971);
-        Book book2 = new Book("Title 2","Author 2",1972);
-        Book book3 = new Book("Title 3","Author 3",1973);
-        Book book4 = new Book("Title 4","Author 4",1974);
-        Book book5 = new Book("Title 5","Author 5",1975);
-        //When
-        bookToRent2.add(book1);
-        bookToRent2.add(book2);
-        bookToRent2.add(book3);
-        bookToRent2.add(book4);
-        bookToRent2.add(book5);
-        bookLibrary.rentABook(user1,bookToRent2.get(0));
-        bookLibrary.rentABook(user1,bookToRent2.get(1));
-        bookLibrary.rentABook(user1,bookToRent2.get(2));
-        bookLibrary.rentABook(user1,bookToRent2.get(3));
-        bookLibrary.rentABook(user1,bookToRent2.get(4));
+        when(libraryDatabaseMock.listBooksInHandsOf(user)).thenReturn(bookList);
 
-
-        //Then
-        //Sprawdzam czy wybrana ksiażka może zostać wypożyczona
-        Assert.assertTrue(bookLibrary.rentABook(user1,book1));
-        Assert.assertTrue(bookLibrary.rentABook(user1,bookToRent2.get(1)));
-        Assert.assertTrue(bookLibrary.rentABook(user1,bookToRent2.get(2)));
-        Assert.assertTrue(bookLibrary.rentABook(user1,bookToRent2.get(3)));
-        Assert.assertTrue(bookLibrary.rentABook(user1,bookToRent2.get(4)));
-
-        //Sprawdzam czy użytkownik ma na koncie 5 książek
-        Assert.assertEquals(5,bookLibrary.listBooksInHandsOf(user1).size());
+        assertEquals(5, bookLibrary.listBooksInHandOf(user).size());
     }
 
     @Test
-    public void testListBooksInHandsOfFor1Books(){
-        //Given
-        LibraryDatabase libraryDatabasemock = mock(LibraryDatabase.class);
-        BookLibrary bookLibrary = new BookLibrary(libraryDatabasemock);
-        List<Book> resultListOfBooks = generateListOfNBooks(10);
-        LibraryUser user1 = new LibraryUser("Piotrek","Szczepanski","85051916111");
-        when(libraryDatabasemock.listBooksWithCondition(anyString())).thenReturn(resultListOfBooks);
-        //When
-        Book book1 = new Book("Title 1","Author 1",1971);
-        //Then
-        //Sprawdzam czy wybrana ksiażka może zostać wypożyczona
-        Assert.assertTrue(bookLibrary.rentABook(user1,book1));
+    public void testListBooksInHandsOf1Books(){
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        LibraryUser user = new LibraryUser("First","Last","pesel");
+        List<Book> bookList = generateListOfNBooks(1);
 
-        //Sprawdzam czy użytkownik ma na koncie 5 książek
-        Assert.assertEquals(1,bookLibrary.listBooksInHandsOf(user1).size());
+        when(libraryDatabaseMock.listBooksInHandsOf(user)).thenReturn(bookList);
+
+        assertEquals(1, bookLibrary.listBooksInHandOf(user).size());
     }
 
     @Test
-    public void testListBooksInHandsOfFor0Books(){
-        //Given
-        LibraryDatabase libraryDatabasemock = mock(LibraryDatabase.class);
-        BookLibrary bookLibrary = new BookLibrary(libraryDatabasemock);
-        List<Book> resultListOfBooks = generateListOfNBooks(10);
-        LibraryUser user1 = new LibraryUser("Piotrek","Szczepanski","85051916111");
-        when(libraryDatabasemock.listBooksWithCondition(anyString())).thenReturn(resultListOfBooks);
-        //When
-        Book book1 = new Book();
-        //Then
-        //Sprawdzam czy wybrana ksiażka może zostać wypożyczona
-        Assert.assertFalse(bookLibrary.rentABook(user1,book1));
+    public void testListBooksInHandsOf0Books(){
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        LibraryUser user = new LibraryUser("First","Last","pesel");
+        List<Book> bookList = generateListOfNBooks(0);
 
-        //Sprawdzam czy użytkownik ma na koncie 0 książek
-        Assert.assertEquals(0,bookLibrary.listBooksInHandsOf(user1).size());
+        when(libraryDatabaseMock.listBooksInHandsOf(user)).thenReturn(bookList);
+
+        assertEquals(0, bookLibrary.listBooksInHandOf(user).size());
     }
 }
 
