@@ -14,9 +14,11 @@ import javafx.stage.Stage;
 
 public class Checkers extends Application {
     private Image imageback = new Image("szachy2.jpg");
-    private Point2D field;
-    private static Point2D field1;
-    private static Point2D field2;
+    private Point2D field = null;
+    private Point2D field1 = null;
+    private static boolean playerMovement = false;
+    private boolean endGame = true;
+    private static int step = 0;
 
 
     @Override
@@ -28,15 +30,9 @@ public class Checkers extends Application {
         //Creat Board
         Board.creatBlackBoard();
         Board.creatWhiteBoard();
-        //Write coordinates board
-       // Board.printChessFields();
-
         //setting of figures
         Figures.startBlackFigures(Board.getChessFieldsBlack());
         Figures.startWhiteFigures(Board.getChessFieldsBlack());
-       // Figures.printCoordniateAllFigures();
-
-        //Figures.printCoordniateAllFigures();
 
         Pane root = new Pane();
         root.setBackground(background);
@@ -44,33 +40,59 @@ public class Checkers extends Application {
         Scene scene = new Scene(root, 800, 800);
 
         EventHandler<MouseEvent> move = new EventHandler<MouseEvent>(){
-
             @Override
             public void handle(MouseEvent event) {
-                if(event.getButton() == MouseButton.PRIMARY) {
+                Player one = new Player();
+                Player two = new Player();
+
+                if (!endGame) {
+                    return;
+                }
+                if (event.getButton().equals(MouseButton.PRIMARY) && step == 0) {
                     field = new Point2D(event.getX(), event.getY());
-                   // System.out.println(field);
-                   // System.out.println(Board.checkFieldBoard(field));
-                    System.out.println(Figures.CoordniatesFigure(field,Color.WHITE));
-                }else if(event.getButton() == MouseButton.SECONDARY){
-                    field1 = new Point2D(event.getX() , event.getY());
-                    System.out.println(Figures.NextField(Board.checkFieldBoard(field1)));
+                    if((Figures.CoordniatesFigure(field,Color.BLACK) != null) /*|| (Board.checkFieldBoardWhite(field) != null)*/){
+                        System.out.println("zle kliknałeś");
+                        return;
+                    }
+                    ++step;
+                } else if (event.getButton().equals(MouseButton.SECONDARY) && step == 1) {
+                    field1 = new Point2D(event.getX(), event.getY());
+                    if((Figures.CoordniatesFigure(field1,Color.BLACK) != null) && (Figures.CoordniatesFigure(field1, Color.WHITE)!=null)){
+                        return;
+                    }
+                   ++step;
+                   playerMovement = true;
+                }
+                if(playerMovement)
+                Player.playerPlay(Figures.CoordniatesFigure(field, Color.WHITE), Figures.NextField(Board.checkFieldBoard(field1)));
+
+                if (event.getButton().equals(MouseButton.PRIMARY) && step == 2) {
+                    field = new Point2D(event.getX(), event.getY());
+                    if(Figures.CoordniatesFigure(field,Color.WHITE) != null){
+                        return;
+                    }
+                    ++step;
+                } else if (event.getButton().equals(MouseButton.SECONDARY) && step == 3) {
+                    field1 = new Point2D(event.getX(), event.getY());
+                    if((Figures.CoordniatesFigure(field1,Color.BLACK) != null) && (Figures.CoordniatesFigure(field1, Color.WHITE)!=null)){
+                        return;
+                    }
+                    step = 0;
+                    playerMovement = false;
+                }
+                if(!playerMovement) {
+                    Player.playerPlay(Figures.CoordniatesFigure(field, Color.BLACK), Figures.NextField(Board.checkFieldBoard(field1)));
                 }
             }
         };
 
-
-
         root.addEventHandler(MouseEvent.MOUSE_CLICKED,move);
-
         primaryStage.setTitle("Warcaby");
         primaryStage.setScene(scene);
         primaryStage.setWidth(820);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
-
-
     public static void main(String[] args) {
         launch(args);
     }
