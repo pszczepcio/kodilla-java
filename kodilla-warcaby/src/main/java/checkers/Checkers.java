@@ -42,21 +42,21 @@ public class Checkers extends Application {
         EventHandler<MouseEvent> move = new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                Player one = new Player();
-                Player two = new Player();
+                Player one = new Player("A", Color.WHITE);
+                Player two = new Player("B", Color.BLACK);
 
                 if (!endGame) {
                     return;
                 }
                 if (event.getButton().equals(MouseButton.PRIMARY) && step == 0) {
-                    field = new Point2D(event.getX(), event.getY());
+                    field = Board.checkFieldBoard(new Point2D(event.getX(), event.getY()));
                     if((Figures.CoordniatesFigure(field,Color.BLACK) != null) /*|| (Board.checkFieldBoardWhite(field) != null)*/){
                         System.out.println("zle kliknałeś");
                         return;
                     }
                     ++step;
                 } else if (event.getButton().equals(MouseButton.SECONDARY) && step == 1) {
-                    field1 = new Point2D(event.getX(), event.getY());
+                    field1 = Board.checkFieldBoard(new Point2D(event.getX(), event.getY()));
                     if((Figures.CoordniatesFigure(field1,Color.BLACK) != null) && (Figures.CoordniatesFigure(field1, Color.WHITE)!=null)){
                         return;
                     }
@@ -64,16 +64,16 @@ public class Checkers extends Application {
                    playerMovement = true;
                 }
                 if(playerMovement)
-                Player.playerPlay(Figures.CoordniatesFigure(field, Color.WHITE), Figures.NextField(Board.checkFieldBoard(field1)));
+                one.playerPlay(Figures.CoordniatesFigure(field, Color.WHITE), Figures.NextField(field1), one.getColor());
 
                 if (event.getButton().equals(MouseButton.PRIMARY) && step == 2) {
-                    field = new Point2D(event.getX(), event.getY());
+                    field = Board.checkFieldBoard(new Point2D(event.getX(), event.getY()));
                     if(Figures.CoordniatesFigure(field,Color.WHITE) != null){
                         return;
                     }
                     ++step;
                 } else if (event.getButton().equals(MouseButton.SECONDARY) && step == 3) {
-                    field1 = new Point2D(event.getX(), event.getY());
+                    field1 = Board.checkFieldBoard(new Point2D(event.getX(), event.getY()));
                     if((Figures.CoordniatesFigure(field1,Color.BLACK) != null) && (Figures.CoordniatesFigure(field1, Color.WHITE)!=null)){
                         return;
                     }
@@ -81,7 +81,7 @@ public class Checkers extends Application {
                     playerMovement = false;
                 }
                 if(!playerMovement) {
-                    Player.playerPlay(Figures.CoordniatesFigure(field, Color.BLACK), Figures.NextField(Board.checkFieldBoard(field1)));
+                    two.playerPlay(Figures.CoordniatesFigure(field, Color.BLACK), Figures.NextField(field1), two.getColor());
                 }
             }
         };
