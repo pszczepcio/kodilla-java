@@ -4,10 +4,11 @@ import static com.kodilla.good.patterns.challenges.airport.Company.getflights;
 
 public class AirMain {
     public static void main(String[] args) {
-        //User user = new User("Piotrek" , "Szczepanski" , "Kraków" , "Gdansk" , "");
-        User user1 = new User("Margiola", "Szczepanska" , "Szczecin" , "Kraków" , "Warszawa" );
         GenerateUser generateUser = new GenerateUser();
         User user = generateUser.generate();
+        User user1 = generateUser.generate1();
+        User user2 = generateUser.generate2();
+
         Company company = new Company();
 
         FlightSearch flightSearch = new FromCity();
