@@ -10,14 +10,13 @@ public class AirMain {
         User user2 = generateUser.generate2();
 
         Company company = new Company();
+        FlightSearch flightSearch = new FlightSearch(user);
+        flightSearch.searchFlightFrom(getflights());
 
-        FlightSearch flightSearch = new FromCity();
-        flightSearch.findFlights(getflights(), user, "");
+        FlightSearch flightSearch1 = new FlightSearch(user1);
+        flightSearch1.searchFlightTo(getflights());
 
-        FlightSearch flightSearch1 = new ToCity();
-        flightSearch1.findFlights(getflights(), user1, "");
-
-        FlightSearch flightSearch2 = new ConnectingFlights();
-        flightSearch2.findFlights(getflights(), user2, user2.getChangeCity());
+        FlightSearch flightSearch2 = new FlightSearch(user2);
+        flightSearch2.searchConnectingFlight(getflights());
     }
 }

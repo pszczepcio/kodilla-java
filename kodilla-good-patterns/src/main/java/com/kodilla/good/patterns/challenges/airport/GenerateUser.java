@@ -4,27 +4,24 @@ public class GenerateUser {
     public User generate() {
         String name = "Piotr";
         String surName = "Szczepanski";
-        String flightFrom = "Kraków";
-        String flightTp = "Gdansk";
-        String changeCity = "";
-        return new User(name, surName, flightFrom, flightTp, changeCity);
+        String departureAirport = "Kraków";
+        String arrivalAirport = "Gdansk";
+        return new User(name, surName, new Airport(departureAirport, arrivalAirport));
     }
 
     public User generate1() {
         String name = "Mariola";
         String surName = "Szczepanska";
-        String flightFrom = "Szczeinw";
-        String flightTo = "Warszawa";
-        String changeCity = "";
-        return new User(name, surName, flightFrom, flightTo, changeCity);
+        String departureAirport = "Szczecin";
+        String arrivalAirport = "Warszawa";
+        return new User(name, surName, new Airport(departureAirport, arrivalAirport));
     }
 
     public User generate2() {
         String name = "Mariola";
         String surName = "Szczepanska";
-        String flightFrom = "Kraków";
-        String flightTo = "Rzeszów";
-        String changeCity = "Krosno";
-        return new User(name, surName, flightFrom, flightTo, changeCity);
+        String departureAirport = "Kraków";
+        String arrivalAirport = "KROSNO-RZESZÓW";
+        return new User(name, surName, new Airport(departureAirport, arrivalAirport));
     }
 }
