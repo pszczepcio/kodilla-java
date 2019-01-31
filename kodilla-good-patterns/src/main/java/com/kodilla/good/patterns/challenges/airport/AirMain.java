@@ -14,12 +14,10 @@ public class AirMain {
         FlightSearch flightSearch = new FromCity();
         flightSearch.findFlights(getflights(), user, "");
 
-        System.out.println();
-
         FlightSearch flightSearch1 = new ToCity();
-        flightSearch1.findFlights(getflights(), user, "");
+        flightSearch1.findFlights(getflights(), user1, "");
 
         FlightSearch flightSearch2 = new ConnectingFlights();
-        flightSearch2.findFlights(getflights(), user1, user1.getChangeCity());
+        flightSearch2.findFlights(getflights(), user2, user2.getChangeCity());
     }
 }
