@@ -1,7 +1,6 @@
 package com.kodilla.good.patterns.challenges.airport;
 
 public class GenerateUser {
-    //
     public User generate() {
         String name = "Piotr";
         String surName = "Szczepanski";

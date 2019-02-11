@@ -2,7 +2,7 @@ package com.kodilla.good.patterns.challenges.airport;
 import java.util.Objects;
 
 public final class Airport {
-    //
+
     private final String departureAirport;
     private final String arrivalAirport;
 

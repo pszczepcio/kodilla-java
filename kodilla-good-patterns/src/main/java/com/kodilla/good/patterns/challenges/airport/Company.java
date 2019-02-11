@@ -2,7 +2,6 @@ package com.kodilla.good.patterns.challenges.airport;
 import java.util.*;
 
 public final class Company {
-    //
     private final static Map<Integer,Airport> flights = new HashMap<>();
 
     public Company(){
@@ -17,7 +16,7 @@ public final class Company {
         flights.put(9,new Airport("SZCZECIN", "WARSZAWA"));
     }
 
-    public static Map<Integer, Airport> getflights() {
+    public static HashMap<Integer, Airport> getflights() {
         return new HashMap<Integer, Airport>(flights);
     }
 
