@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class FlightSearch {
+    //
     private User user;
 
     public FlightSearch(User user) {

@@ -1,6 +1,7 @@
 package com.kodilla.good.patterns.challenges.airport;
 
 public final class User {
+    //
     private final String name;
     private final String surName;
     private Airport airport;
