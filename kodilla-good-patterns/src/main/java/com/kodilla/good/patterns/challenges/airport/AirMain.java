@@ -1,5 +1,4 @@
 package com.kodilla.good.patterns.challenges.airport;
-
 import static com.kodilla.good.patterns.challenges.airport.Company.getflights;
 
 public class AirMain {
@@ -8,7 +7,6 @@ public class AirMain {
         User user = generateUser.generate();
         User user1 = generateUser.generate1();
         User user2 = generateUser.generate2();
-
         Company company = new Company();
         FlightSearch flightSearch = new FlightSearch(user);
         flightSearch.searchFlightFrom(getflights());

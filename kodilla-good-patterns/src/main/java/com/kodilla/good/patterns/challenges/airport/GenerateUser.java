@@ -17,6 +17,7 @@ public class GenerateUser {
         return new User(name, surName, new Airport(departureAirport, arrivalAirport));
     }
 
+
     public User generate2() {
         String name = "Mariola";
         String surName = "Szczepanska";

@@ -5,7 +5,6 @@ public final class User {
     private final String surName;
     private Airport airport;
 
-
     public User(final String name, final String surName, final Airport airport) {
         this.name = name;
         this.surName = surName;

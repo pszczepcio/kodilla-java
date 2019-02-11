@@ -1,5 +1,4 @@
 package com.kodilla.good.patterns.challenges.airport;
-
 import java.util.*;
 
 public final class Company {

@@ -1,6 +1,4 @@
 package com.kodilla.good.patterns.challenges.airport;
-
-
 import java.util.Objects;
 
 public final class Airport {
