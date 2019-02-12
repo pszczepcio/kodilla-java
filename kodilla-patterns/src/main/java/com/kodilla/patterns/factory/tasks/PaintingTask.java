@@ -16,12 +16,7 @@ public class PaintingTask implements Task {
 
     @Override
     public void executeTask() {
-        Random generator = new Random();
-        if(generator.nextInt(20)%2 == 0){
             taskStatus = true;
-        }else{
-            taskStatus = false;
-        }
     }
 
     @Override
