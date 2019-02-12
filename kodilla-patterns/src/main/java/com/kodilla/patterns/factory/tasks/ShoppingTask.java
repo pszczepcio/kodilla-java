@@ -15,11 +15,7 @@ public class ShoppingTask implements Task{
 
     @Override
     public void executeTask() {
-        if(quantityProductInShop - quantity >= 0){
-            taskStatus = true;
-        }else if(quantityProductInShop - quantity < 0){
-            taskStatus = false;
-        }
+        taskStatus = true;
     }
 
     @Override
