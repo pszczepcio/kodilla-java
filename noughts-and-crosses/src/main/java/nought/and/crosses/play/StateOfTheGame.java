@@ -1,46 +1,40 @@
 package nought.and.crosses.play;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StateOfTheGame {
-    private List<DataField> checkOfWinningFields;
+    private List<String> list;
+    private static List<Boolean> conditionValue = new ArrayList<>();
     private boolean winner = false;
 
-
-    public StateOfTheGame(List<DataField> checkOfWinningFields) {
-        this.checkOfWinningFields = checkOfWinningFields;
+    public StateOfTheGame(List<String> list) {
+        this.list = list;
+            conditionValue.add(getList(0) == getList(1) && getList(1) == getList(2));
+            conditionValue.add(getList(3) == getList(4) && getList(4) == getList(5));
+            conditionValue.add(getList(6) == getList(7) && getList(7) == getList(8));
+            conditionValue.add(getList(0) == getList(3) && getList(3) == getList(6));
+            conditionValue.add(getList(1) == getList(4) && getList(4) == getList(7));
+            conditionValue.add(getList(2) == getList(5) && getList(5) == getList(8));
+            conditionValue.add(getList(0) == getList(4) && getList(4) == getList(8));
+            conditionValue.add(getList(2) == getList(4) && getList(4) == getList(6));
     }
 
     public boolean checkStateOfTheGame() {
-            if (getCheckOfWinningFields(0) == getCheckOfWinningFields(1) && getCheckOfWinningFields(1) == getCheckOfWinningFields(2)) {
-                winner = true;
-                return winner;
-            } else if(getCheckOfWinningFields(3) == getCheckOfWinningFields(4) && getCheckOfWinningFields(4) == getCheckOfWinningFields(5)){
-                winner = true;
-                return winner;
-            }else if(getCheckOfWinningFields(6) == getCheckOfWinningFields(7) && getCheckOfWinningFields(7) == getCheckOfWinningFields(8)) {
-                winner = true;
-                return winner;
-            }else if(getCheckOfWinningFields(0) == getCheckOfWinningFields(3) && getCheckOfWinningFields(3) == getCheckOfWinningFields(6)) {
-                winner = true;
-                return winner;
-            }else if(getCheckOfWinningFields(1) == getCheckOfWinningFields(4) && getCheckOfWinningFields(4) == getCheckOfWinningFields(7)) {
-                winner = true;
-                return winner;
-            }else if(getCheckOfWinningFields(2) == getCheckOfWinningFields(5) && getCheckOfWinningFields(5) == getCheckOfWinningFields(8)) {
-                winner = true;
-                return winner;
-            }else if(getCheckOfWinningFields(0) == getCheckOfWinningFields(4) && getCheckOfWinningFields(4) == getCheckOfWinningFields(8)) {
-                winner = true;
-                return winner;
-            }else if(getCheckOfWinningFields(2) == getCheckOfWinningFields(4) && getCheckOfWinningFields(4) == getCheckOfWinningFields(6)) {
-                winner = true;
-                return winner;
+
+        for (int i = 0; i < getConditionValue().size(); i++) {
+            if (getConditionValue().get(i).booleanValue() == true) {
+                return true;
             }
-        return winner;
+        }
+        return false;
     }
 
-    public String getCheckOfWinningFields(int i) {
-        return checkOfWinningFields.get(i).getText();
+    public String getList(int i) {
+        return list.get(i);
+    }
+
+    public static List<Boolean> getConditionValue() {
+        return conditionValue;
     }
 }

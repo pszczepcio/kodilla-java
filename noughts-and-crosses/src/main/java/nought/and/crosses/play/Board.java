@@ -1,6 +1,5 @@
 package nought.and.crosses.play;
 
-
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;

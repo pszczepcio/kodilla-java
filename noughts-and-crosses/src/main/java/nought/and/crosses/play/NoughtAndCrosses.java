@@ -6,28 +6,28 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-
 import javafx.stage.Stage;
 
-public class NoughtAndCrosses extends Application {
-   private static Pane root = new Pane();
-   private static EventHandler<MouseEvent> mouseClicked;
 
-   public static void main(String[] args) {
+public class NoughtAndCrosses extends Application {
+    private static Pane root = new Pane();
+    private static EventHandler<MouseEvent> mouseClicked;
+
+    public static void main(String[] args) {
         launch(args);
-   }
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         Board board = new Board();
-        CheckField checkField = new CheckField();
+        ConditionsForBoard conditionsForBoard = new ConditionsForBoard();
+        CreatListOfFields.ListOffields();
+        CreatListOfFields.textList();
+        action();
 
-        mouseClicked = e -> {
-            if(e.getButton() == MouseButton.PRIMARY){
-                    Play play = new Play();
-                    play.play(e.getX(), e.getY());
-                }
-        };
+
+
+
 
         getRoot().addEventHandler(MouseEvent.MOUSE_CLICKED, mouseClicked);
         root.getChildren().addAll(board.getBoard());
@@ -41,8 +41,17 @@ public class NoughtAndCrosses extends Application {
         return root;
     }
 
+    public void action(){
+        mouseClicked = e -> {
+            if(e.getButton() == MouseButton.PRIMARY){
+                Play play = new Play();
+                play.play(e.getX(), e.getY());
+            }
+        };
+    }
+
     public static EventHandler<MouseEvent> getMouseClicked() {
         return mouseClicked;
     }
-}
 
+}
