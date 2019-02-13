@@ -36,6 +36,7 @@ public class ConditionsForBoard {
                 NoughtAndCrosses.getRoot().getChildren().add(text);
                 break;
             }else if(tab[i] == false && x > CreatListOfFields.getBeginnigX(i) && x < CreatListOfFields.getEndX(i) && y > CreatListOfFields.getBeginnigY(i) && y < CreatListOfFields.getEndY(i)){
+                PlayWithComputer.setRemoveClick(1);
                 Play.setRemoveClick(1);
             }
         }

@@ -1,16 +1,25 @@
 package nought.and.crosses.play;
 
+import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 
 public class Play {
     private static int countClick;
     private static int removeClick;
     private boolean winner = false;
+    private Player playerOne;
+    private Player playerTwo;
+    private String playerOneName;
+    private String playerTwoName;
+
+    public Play(String playerOneName, String playerTwoName) {
+        this.playerOneName = playerOneName;
+        this.playerTwoName = playerTwoName;
+    }
 
     public void play(double x, double y) {
-        Player playerOne = new Player("Piotrek", "X");
-        Player playerTwo = new Player("Mariola", "0");
-        Player computer = new Player("Computer", "0");
+        playerOne = new Player(playerOneName, "X");
+        playerTwo = new Player(playerTwoName, "O");
 
         countClick = countClick + 1 - getRemoveClick();
         setRemoveClick(0);
@@ -23,14 +32,14 @@ public class Play {
                  System.out.println("The winner is player: " + playerOne.getName());
                  NoughtAndCrosses.getRoot().removeEventHandler(MouseEvent.MOUSE_CLICKED , NoughtAndCrosses.getMouseClicked());
              }
-        }else if(countClick%2==0){
-                ConditionsForBoard.checkConditionsForBoard(x, y, playerTwo.getSign());
-                StateOfTheGame stateOfTheGame = new StateOfTheGame(ConditionsForBoard.getSignList());
-                winner = stateOfTheGame.checkStateOfTheGame();
-                if(stateOfTheGame.checkStateOfTheGame()) {
-                    System.out.println("The winner is player: " + playerTwo.getName());
-                    NoughtAndCrosses.getRoot().removeEventHandler(MouseEvent.MOUSE_CLICKED , NoughtAndCrosses.getMouseClicked());
-                }
+        }else if(countClick%2 == 0){
+             ConditionsForBoard.checkConditionsForBoard(x, y,playerTwo.getSign());
+             StateOfTheGame stateOfTheGame = new StateOfTheGame(ConditionsForBoard.getSignList());
+             winner = stateOfTheGame.checkStateOfTheGame();
+             if(stateOfTheGame.checkStateOfTheGame()) {
+                 System.out.println("The winner is player: " + playerTwo.getName());
+                 NoughtAndCrosses.getRoot().removeEventHandler(MouseEvent.MOUSE_CLICKED , NoughtAndCrosses.getMouseClicked());
+             }
         }
         if(countClick == 9){
             System.out.println("Remis");
