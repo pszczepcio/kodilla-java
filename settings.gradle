@@ -8,4 +8,6 @@ include 'kodilla-spring'
 include 'kodilla-patterns'
 include 'kodilla-jdbc'
 include 'noughts-and-crosses'
+include 'Ćwiczenia'
+include 'kodilla-rps'
 
