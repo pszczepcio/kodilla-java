@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import java.math.BigDecimal;
 
 
@@ -66,15 +65,17 @@ public class InvoiceDaoTestSuite {
         item5.setInvoice(invoice1);
         //When
         invoiceDao.save(invoice1);
-        int id = invoice1.getId();
 
         //Then
-        Assert.assertNotEquals(0,id);
+        Assert.assertNotEquals(0,invoice1.getId());
+        Assert.assertNotEquals(0,item.getId());
+        Assert.assertNotEquals(0,apple.getId());
 
         //CleanUp
-        invoiceDao.delete(id);
-
-
-
+         invoiceDao.delete(invoice1.getId());
+         productDao.delete(melon.getId());
+         productDao.delete(apple.getId());
+         productDao.delete(carrot.getId());
+         productDao.delete(orange.getId());
     }
 }

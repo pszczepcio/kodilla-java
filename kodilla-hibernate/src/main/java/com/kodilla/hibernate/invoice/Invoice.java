@@ -28,7 +28,7 @@ public class Invoice {
     }
 
     @NotNull
-    @Column(name = "NUMBER_INVOICE", unique = true)
+    @Column(name = "NUMBER_INVOICE")
     public String getNumber() {
         return number;
     }
@@ -55,4 +55,3 @@ public class Invoice {
         this.items = items;
     }
 }
-

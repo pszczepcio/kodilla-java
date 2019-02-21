@@ -27,7 +27,7 @@ public class Product {
         return id;
     }
 
-    @Column(name = "PRODUCT_NAME", unique = true)
+    @Column(name = "PRODUCT_NAME")
     public String getName() {
         return name;
     }
