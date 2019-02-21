@@ -28,7 +28,7 @@ public class Invoice {
     }
 
     @NotNull
-    @Column(name = "NUMBER_INVOICE")
+    @Column(name = "NUMBER_INVOICE", unique = true)
     public String getNumber() {
         return number;
     }
