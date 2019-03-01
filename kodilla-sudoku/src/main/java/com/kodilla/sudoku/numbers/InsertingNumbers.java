@@ -1,6 +1,5 @@
 package com.kodilla.sudoku.numbers;
 
-import com.kodilla.sudoku.board.SudokuBoard;
 import com.kodilla.sudoku.game.AutomaticSudokuResolution;
 
 import java.util.Scanner;
@@ -56,7 +55,6 @@ public class InsertingNumbers {
      private void checkWordSudoku(String word){
          if(word.equals(SUDOKU)){
              automaticSudokuResolution.Solution();
-             //SudokuBoard.printBoard();
              return;
          }
              System.out.println("You entered a letter instead of a number or you entered a letter. Please enter the correct number.");

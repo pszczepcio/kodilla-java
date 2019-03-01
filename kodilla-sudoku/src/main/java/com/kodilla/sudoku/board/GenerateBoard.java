@@ -42,6 +42,12 @@ public class GenerateBoard {
         SudokuBoard.setvalueOfSingleField(8, 9, 7);
         SudokuBoard.setvalueOfSingleField(9, 8, 6);
 
+        SudokuBoard.setvalueOfSingleField(9, 3, 8);
+//        SudokuBoard.setvalueOfSingleField(1, 3, 6);
+//        SudokuBoard.setvalueOfSingleField(1, 7, 3);
+//        SudokuBoard.setvalueOfSingleField(1, 9, 8);
+//        SudokuBoard.setvalueOfSingleField(9, 1, 3);
+
         SudokuBoard.printBoard();
     }
 }

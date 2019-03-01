@@ -5,21 +5,9 @@ import com.kodilla.sudoku.board.SudokuBoard;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImplementationSudokuConditions {
-    private static final int CASE1 = 1;
-    private static final int CASE2 = 2;
-    private static final int CASE3 = 3;
-    private static final int CASE4 = 4;
-    private static final int CASE5 = 5;
-    private static final int CASE6 = 6;
-    private static final int CASE7 = 7;
-    private static final int CASE8 = 8;
-    private static final int CASE9 = 9;
+public class ImplementationSudokuConditions extends Sections{
     private boolean writeNumber;
-    private boolean singleSelection;
     private static List<Integer> numbersEntered = new ArrayList<>();
-    private List<SingleBlock> singleBlockList = new ArrayList<>();
-    private int numberRepetitions;
     private List<Integer> list;
     private int numberBlock;
     private int counter;
@@ -36,10 +24,22 @@ public class ImplementationSudokuConditions {
         }
         for(int i = 0 ; i < 9 ; i++){
             for(int j = 0 ; j < 9 ; j++){
+                numberBlock = searchBlockNumber(i+1,j+1);
+                list = busyFieldsInBlock(numberBlock);
+              //  System.out.println(numberBlock);
                 if(SudokuBoard.getProbaleNumbersSize(i+1,j+1) == 1){
-                    SudokuBoard.setvalueOfSingleField(i+1, j+1, SudokuBoard.getProbableNumber(i+1, j+1, 0));
-                    SudokuBoard.getSudokuBoard().get(i).getRow().get(j).getProbableNumbers().remove(0);
-                    writeNumber = true;
+                    numberBlock = searchBlockNumber(i+1,j+1);
+                    list = busyFieldsInBlock(numberBlock);
+                    for (int x = 0 ; x < list.size() ; x++ ) {
+                        if(SudokuBoard.getProbableNumber(i+1,j+1, 0 ) != list.get(x)){
+                            ++counter;
+                        }
+                        if (counter == list.size()) {
+                            SudokuBoard.setvalueOfSingleField(i + 1, j + 1, SudokuBoard.getProbableNumber(i + 1, j + 1, 0));
+                            SudokuBoard.getSudokuBoard().get(i).getRow().get(j).getProbableNumbers().remove(0);
+                            writeNumber = true;
+                        }
+                    }
                 }
             }
         }
@@ -65,6 +65,7 @@ public class ImplementationSudokuConditions {
             SudokuBoard.getSudokuBoard().get(row).getRow().get(column).getProbableNumbers().remove(numbersEntered.get(i));
         }
         numbersEntered.clear();
+
         int block = searchBlockNumber(row+1,column+1);
         list = busyFieldsInBlock(block);
         for(int i = 0 ; i < list.size() ; i++){
@@ -100,7 +101,7 @@ public class ImplementationSudokuConditions {
 
     public List<Integer> busyFieldsInBlock(int numberBlock){
         switch (numberBlock){
-            case CASE1: {
+            case SECTION1: {
                 numbersEntered.clear();
                 for(int i = 0 ; i < 3 ; i++){
                     for(int j = 0 ; j < 3 ; j++){
@@ -111,7 +112,7 @@ public class ImplementationSudokuConditions {
                 }
                 break;
             }
-            case CASE2: {
+            case SECTION2: {
                 numbersEntered.clear();
                 for(int i = 0 ; i < 3 ; i++){
                     for(int j = 3 ; j < 6 ; j++){
@@ -122,7 +123,7 @@ public class ImplementationSudokuConditions {
                 }
                 break;
             }
-            case  CASE3: {
+            case  SECTION3: {
                 numbersEntered.clear();
                 for(int i = 0 ; i < 3 ; i++){
                     for(int j = 6 ; j < 9 ; j++){
@@ -133,7 +134,7 @@ public class ImplementationSudokuConditions {
                 }
                 break;
             }
-            case CASE4: {
+            case SECTION4: {
                 numbersEntered.clear();
                 for(int i = 3 ; i < 6 ; i++){
                     for(int j = 0 ; j < 3 ; j++){
@@ -144,7 +145,7 @@ public class ImplementationSudokuConditions {
                 }
                 break;
             }
-            case CASE5: {
+            case SECTION5: {
                 numbersEntered.clear();
                 for(int i = 3 ; i < 6 ; i++){
                     for(int j = 3 ; j < 6 ; j++){
@@ -155,7 +156,7 @@ public class ImplementationSudokuConditions {
                 }
                 break;
             }
-            case CASE6: {
+            case SECTION6: {
                 numbersEntered.clear();
                 for(int i = 3 ; i < 6 ; i++){
                     for(int j = 6 ; j < 9 ; j++){
@@ -166,7 +167,7 @@ public class ImplementationSudokuConditions {
                 }
                 break;
             }
-            case CASE7: {
+            case SECTION7: {
                 numbersEntered.clear();
                 for(int i = 6 ; i < 9 ; i++){
                     for(int j = 0 ; j < 3 ; j++){
@@ -177,7 +178,7 @@ public class ImplementationSudokuConditions {
                 }
                 break;
             }
-            case CASE8: {
+            case SECTION8: {
                 numbersEntered.clear();
                 for(int i = 6 ; i < 9 ; i++){
                     for(int j = 3 ; j < 6 ; j++){
@@ -188,7 +189,7 @@ public class ImplementationSudokuConditions {
                 }
                 break;
             }
-            case CASE9: {
+            case SECTION9: {
                 numbersEntered.clear();
                 for(int i = 6 ; i < 9 ; i++){
                     for(int j = 6 ; j < 9 ; j++){
@@ -202,33 +203,4 @@ public class ImplementationSudokuConditions {
         }
         return numbersEntered;
     }
-
-    public boolean singleSelectionInBlock(int iStart, int jStart, int iEnd, int jEnd){
-        singleSelection = false;
-        singleBlockList.clear();
-        for(int i = iStart ; i < iEnd ; i++) {
-            for (int j = jStart; j < jEnd; j++) {
-                if (SudokuBoard.getvalueOfSingleField(i + 1, j + 1) == -1) {
-                    for (int a = 0; a < SudokuBoard.getProbaleNumbersSize(i + 1, j + 1) ; a++) {
-                        singleBlockList.add(new SingleBlock(i, j, SudokuBoard.getProbableNumber(i + 1, j + 1, a)));
-                    }
-                }
-            }
-        }
-        for(int j = 1 ; j <= 9 ; j++){
-            for(int i = 0 ; i < singleBlockList.size() ; i++){
-                if(singleBlockList.get(i).getNumber() == j){
-                    numberRepetitions = i;
-                    counter++;
-                }
-            }
-            if(counter == 1){
-                SudokuBoard.setvalueOfSingleField(singleBlockList.get(numberRepetitions).getRow() +1 , singleBlockList.get(numberRepetitions).getColumn() + 1, singleBlockList.get(numberRepetitions).getNumber());
-                singleSelection = true;
-            }
-            counter = 0;
-        }
-        return singleSelection;
-    }
-
 }

@@ -1,6 +1,5 @@
 package com.kodilla.sudoku;
 
-
 import com.kodilla.sudoku.board.GenerateBoard;
 import com.kodilla.sudoku.board.SudokuBoard;
 import com.kodilla.sudoku.game.BlockConditions;
@@ -20,13 +19,15 @@ public class SudokuGame {
         SudokuConditions sudokuConditions;
         boolean gameFinished = false;
         while(!gameFinished) {
+
             /*
             SudokuGame theGame = new SudokuGame();
             gameFinished = theGame.resolveSudoku();
             */
+
             insertingNumbers.checkingInsertNumbers();
             numbersDto = insertingNumbers.getNumbersDto();
-            System.out.println(numbersDto.getRowNumber() + ", " + numbersDto.getColumnNumber() + ", " + numbersDto.getNumber());
+            //System.out.println(numbersDto.getRowNumber() + ", " + numbersDto.getColumnNumber() + ", " + numbersDto.getNumber());
             sudokuConditions = new SudokuConditions(numbersDto);
             BlockConditions blockConditions = new BlockConditions(numbersDto);
             if(sudokuConditions.checkFreeColumnAndRow() && blockConditions.checkConditionForBlock(blockConditions.searchBlockNumber())) {
