@@ -10,6 +10,4 @@ public class Sections {
     protected static final int SECTION7 = 7;
     protected static final int SECTION8 = 8;
     protected static final int SECTION9 = 9;
-
 }
-

@@ -1,13 +1,15 @@
 package com.kodilla.sudoku.numbers;
 
-import com.kodilla.sudoku.game.AutomaticSudokuResolution;
+
+
+import com.kodilla.sudoku.computer.ComputerGame;
 
 import java.util.Scanner;
 
 public class InsertingNumbers {
-    AutomaticSudokuResolution automaticSudokuResolution = new AutomaticSudokuResolution();
     private Scanner scanner = new Scanner(System.in);
     private final static String SUDOKU = "sudoku";
+    private ComputerGame computerGame = new ComputerGame();
     private String word;
     private int columnNumber ;
     private int rowNumber ;
@@ -18,7 +20,8 @@ public class InsertingNumbers {
             word = scanner.next();
             checkWordSudoku(word);
         }
-        columnNumber = scanner.nextInt();
+        columnNumber = scanner.nextInt()-1;
+        //System.out.println(columnNumber);
     }
 
     private void insertRowNumber(){
@@ -27,7 +30,8 @@ public class InsertingNumbers {
             word = scanner.next();
             checkWordSudoku(word);
         }
-        rowNumber = scanner.nextInt();
+        rowNumber = scanner.nextInt()-1;
+        //System.out.println(rowNumber);
 
     }
 
@@ -54,7 +58,7 @@ public class InsertingNumbers {
 
      private void checkWordSudoku(String word){
          if(word.equals(SUDOKU)){
-             automaticSudokuResolution.Solution();
+             computerGame.sudokuSolution();
              return;
          }
              System.out.println("You entered a letter instead of a number or you entered a letter. Please enter the correct number.");

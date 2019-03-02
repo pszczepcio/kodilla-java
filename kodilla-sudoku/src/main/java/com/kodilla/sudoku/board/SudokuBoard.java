@@ -34,24 +34,44 @@ public class SudokuBoard {
         }
     }
 
+  //  public SudokuBoard deepCopy() throws CloneNotSupportedException{
+//        SudokuBoard clonedSudokuBoard = (SudokuBoard)super.clone();
+//        clonedSudokuBoard.sudokuBoard = new ArrayList<>();
+//        for(SudokuRow theSudokuRow : sudokuBoard){
+//            SudokuRow clonedSudokuRow = new SudokuRow(theSudokuRow.getRow().);
+//            for (SudokuElement coptSudokuElement: theSudokuRow.getRow()) {
+//                clonedSudokuRow.getRow().add(coptSudokuElement);
+//                for(int i = 0 ; i < coptSudokuElement.getProbableNumbers().size() ; i++) {
+//                    coptSudokuElement.getValue();
+//                   coptSudokuElement.getProbableNumbers();
+//                }
+//            }
+//            sudokuBoard.add(clonedSudokuRow);
+//        }
+//        return clonedSudokuBoard;
+   // }
+
     public  static List<SudokuRow> getSudokuBoard() {
         return sudokuBoard;
     }
 
     public static int getvalueOfSingleField(int row, int column){
-        return getSudokuBoard().get(row - 1).getRow().get(column - 1).getValue();
+        return getSudokuBoard().get(row).getRow().get(column).getValue();
     }
 
     public static void setvalueOfSingleField(int row, int column, int number){
-        getSudokuBoard().get(row - 1).getRow().get(column - 1).setValue(number);
+        getSudokuBoard().get(row).getRow().get(column).setValue(number);
     }
 
     public static int getProbaleNumbersSize(int row , int column){
-        return getSudokuBoard().get(row-1).getRow().get(column-1).getProbableNumbers().size();
+        return getSudokuBoard().get(row).getRow().get(column).getProbableNumbers().size();
     }
 
     public static int getProbableNumber(int row, int column, int numberOfList){
-        return getSudokuBoard().get(row-1).getRow().get(column-1).getProbableNumbers().get(numberOfList);
+        return getSudokuBoard().get(row).getRow().get(column).getProbableNumbers().get(numberOfList);
     }
 
+    public static void setSudokuBoard(List<SudokuRow> sudokuBoard) {
+        SudokuBoard.sudokuBoard = sudokuBoard;
+    }
 }
