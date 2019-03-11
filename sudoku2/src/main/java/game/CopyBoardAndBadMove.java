@@ -1,7 +1,7 @@
-package board;
+package game;
 
 import InsertData.NumberDTO;
-import game.BackTrack;
+import board.SudokuBoard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +25,7 @@ public class CopyBoardAndBadMove {
             System.out.println(e);
         }
         badMoves.add(new BackTrack(board,this.numberDTO));
-
     }
-
 
     public SudokuBoard getBoard() {
         return board;
@@ -40,5 +38,4 @@ public class CopyBoardAndBadMove {
     public NumberDTO getNumberDTO() {
         return numberDTO;
     }
-
 }

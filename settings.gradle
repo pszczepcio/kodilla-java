@@ -11,4 +11,6 @@ include 'noughts-and-crosses'
 include 'Ćwiczenia'
 include 'kodilla-rps'
 include 'kodilla-sudoku'
+include 'sudoku2'
+include 'sudoku3'
 

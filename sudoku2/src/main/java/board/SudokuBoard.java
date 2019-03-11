@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SudokuBoard extends ProtoType {
-    private Numbers numbers;
-
     private List<SudokuRow> sudokuBoard = new ArrayList<>();
 
     public List<SudokuRow> getSudokuBoard() {
@@ -14,14 +12,6 @@ public class SudokuBoard extends ProtoType {
 
     public int getvalueOfSingleField(int row, int column){
         return getSudokuBoard().get(row).getSudokuElementsInRow().get(column).getValue();
-    }
-
-    public List<Integer> getProbableNumbers(int row, int column){
-        return getSudokuBoard().get(row).getSudokuElementsInRow().get(column).getProbableNumbersList();
-    }
-
-    public int getProbableNumberSize(int row, int column){
-        return getSudokuBoard().get(row).getSudokuElementsInRow().get(column).getProbableNumbersList().size();
     }
 
     public void setValueOfSingleField(int row, int column, int number){
@@ -49,10 +39,6 @@ public class SudokuBoard extends ProtoType {
         }
     }
 
-    public SudokuBoard shallowCopy() throws CloneNotSupportedException{
-        return (SudokuBoard) super.clone();
-    }
-
     public SudokuBoard deepCopy() throws CloneNotSupportedException{
         SudokuBoard clonedSudokuBoard = (SudokuBoard)super.clone();
         clonedSudokuBoard.sudokuBoard = new ArrayList<>();
@@ -63,7 +49,7 @@ public class SudokuBoard extends ProtoType {
                 SudokuElement clonedElement = new SudokuElement();
                 clonedElement.setValue(element.getValue());
                 for(Integer numbers: element.getProbableNumbersList()) {
-                       clonedElement.getProbableNumbersList().add(numbers);
+                    clonedElement.getProbableNumbersList().add(numbers);
                 }
                 clonedSudokuRow.getSudokuElementsInRow().add(clonedElement);
             }

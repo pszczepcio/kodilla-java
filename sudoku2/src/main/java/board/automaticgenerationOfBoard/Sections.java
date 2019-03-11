@@ -1,4 +1,4 @@
-package game;
+package board.automaticgenerationOfBoard;
 
 public class Sections {
     protected static final int SECTION1 = 1;

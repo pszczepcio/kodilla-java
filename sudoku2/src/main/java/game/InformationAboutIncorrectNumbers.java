@@ -2,7 +2,6 @@ package game;
 
 import InsertData.InsertNumber;
 import InsertData.NumberDTO;
-import board.CopyBoardAndBadMove;
 import board.SudokuBoard;
 
 public class InformationAboutIncorrectNumbers {
@@ -19,26 +18,16 @@ public class InformationAboutIncorrectNumbers {
         this.numberDTO = numberDTO;
     }
 
-    public boolean countIncorrectNumbers() {
+    public void countIncorrectNumbers() {
         if(this.sudokuBoard.getvalueOfSingleField(numberDTO.getRowNumber(), numberDTO.getColumnNumber()) != -1
-            && numberDTO !=null && this.sudokuBoard.getvalueOfSingleField(numberDTO.getRowNumber(),numberDTO.getColumnNumber())!=
+                && numberDTO != null
+                && this.sudokuBoard.getvalueOfSingleField(numberDTO.getRowNumber(),numberDTO.getColumnNumber())!=
                 copyBoard.getvalueOfSingleField(numberDTO.getRowNumber(),numberDTO.getColumnNumber())) {
 
             copyBoardAndBadMove = new CopyBoardAndBadMove(sudokuBoard, numberDTO);
             copyBoardAndBadMove.copyBadMove();
             incorrectNumbers = false;
         }
-        if(0 < CopyBoardAndBadMove.getBadMoves().size() && CopyBoardAndBadMove.getBadMoves().size() < 2) {
-            System.out.print("You enetered 3 incorrect numbers. If you want to undo the game, press \"c\" ");
-            System.out.println("or if you want finish the game, press \" e\"");
-            if (!insertNumber.insertUndoOrEnd()) {
-                undoGame();
-                incorrectNumbers = false;
-            }else{
-                incorrectNumbers = true;
-            }
-        }
-        return incorrectNumbers;
     }
 
     private void undoGame(){

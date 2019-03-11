@@ -1,71 +1,75 @@
 package InsertData;
-
-import Computer.Computer;
+import board.GameStart;
 import board.SudokuBoard;
-
 import java.util.Scanner;
 
 public class InsertNumber {
     private NumberDTO numberDTO;
     private SudokuBoard sudokuBoard;
+    private SudokuBoard copySudokuBoard;
     private Scanner scanner = new Scanner(System.in);
     private final static String SUDOKU = "sudoku";
     private final static String YES = "y";
     private final static String NO = "n";
-    private final static String UNDO = "c";
-    private final static String END = "e";
-    private String insertYesOrNo;
-    private String insertUndoOrEnd;
-
-    private Computer computer;
     private String word;
     private int columnNumber ;
     private int rowNumber ;
     private int number ;
-    private boolean yesOrNo;
     private boolean choiceYesOrNo;
-    private boolean undOrEnd;
-    private boolean choiceUndOrEnd;
 
     public InsertNumber() {
     }
 
-    public InsertNumber(SudokuBoard sudokuBoard) {
+    public InsertNumber(SudokuBoard sudokuBoard, SudokuBoard copySudokuBoard) {
         this.sudokuBoard = sudokuBoard;
+        this.copySudokuBoard = copySudokuBoard;
     }
 
-    private void insertColumnNumber(){
+    public boolean insertColumnNumber(){
         while (!scanner.hasNextInt()){
             word = scanner.next();
-            checkWordSudoku(word);
+            if(!checkWordSudoku(word)){
+                return true;
+            }else{
+                return false;
+            }
         }
         columnNumber = scanner.nextInt()-1;
+        return false;
     }
 
-    private void insertRowNumber(){
+    private boolean insertRowNumber(){
         while(!scanner.hasNextInt()){
-            scanner.next();
             word = scanner.next();
-            checkWordSudoku(word);
+            if (!checkWordSudoku(word)) {
+                return true;
+            }else {
+                return false;
+            }
         }
         rowNumber = scanner.nextInt()-1;
+        return false;
     }
 
-    private void insertNumber(){
+    private boolean insertNumber(){
         while(!scanner.hasNextInt()){
-            scanner.next();
             word = scanner.next();
-            checkWordSudoku(word);
+            if (!checkWordSudoku(word)) {
+                return true;
+            }else {
+                return false;
+            }
         }
         int number1 = scanner.nextInt();
         if(1 <= number1 && number1 <= 9){
             number = number1;
         }
+        return false;
     }
 
-    private boolean insertYesOrNo(){
-        yesOrNo = false;
-        insertYesOrNo = scanner.next();
+    public boolean insertYesOrNo(){
+        boolean yesOrNo = false;
+        String insertYesOrNo = scanner.next();
         while (!yesOrNo){
             if (insertYesOrNo.equals(YES)){
                 choiceYesOrNo = false;
@@ -78,45 +82,50 @@ public class InsertNumber {
         return choiceYesOrNo;
     }
 
-    public boolean insertUndoOrEnd(){
-        undOrEnd = false;
-        insertUndoOrEnd = scanner.next();
-        while (!undOrEnd){
-            if (insertUndoOrEnd.equals(UNDO)){
-                choiceUndOrEnd = false;
-                undOrEnd = true;
-            }else if (insertUndoOrEnd.equals(END)){
-                choiceUndOrEnd = true;
-                undOrEnd = true;
-            }
-        }
-        return choiceUndOrEnd;
-    }
-
     public NumberDTO checkingInsertNumbers(){
-        numberDTO = null;
         System.out.print("Please insert the column number :");
-        insertColumnNumber();
+        if (insertColumnNumber()){
+            return numberDTO = new NumberDTO(0,0,0);
+        }
         System.out.print("Please insert the row number :");
-        insertRowNumber();
+        if (insertRowNumber()){
+            return numberDTO = new NumberDTO(0,0,0);
+        }
         System.out.print("Please enter a number from 1 to 9 :");
-        insertNumber();
-        if((0 <= this.columnNumber && this.columnNumber < 9) && (0 <= this.rowNumber && this.rowNumber < 9) && this.sudokuBoard.getvalueOfSingleField(this.rowNumber, this.columnNumber) == -1){
+        if (insertNumber()){
+            return numberDTO = new NumberDTO(0,0,0);
+        }
+
+        if((0 <= this.columnNumber && this.columnNumber < 9)
+                && (0 <= this.rowNumber && this.rowNumber < 9) && this.sudokuBoard.getvalueOfSingleField(this.rowNumber, this.columnNumber) == -1
+                || this.sudokuBoard.getSudokuBoard().get(this.rowNumber).getSudokuElementsInRow().get(this.columnNumber).isChange()){
             numberDTO = new NumberDTO(getRowNumber(), getColumnNumber(), getNumber());
-        }else /*if (this.columnNumber > 9 || this.rowNumber > 9 || number > 9)*/{
+        }else {
             System.out.println("You entered the wrong number or occupied field");
             numberDTO = null;
         }
         return numberDTO;
     }
 
-    private void checkWordSudoku(String word){
+    public boolean checkWordSudoku(String word){
+        boolean value;
+        boolean value2;
         if(word.equals(SUDOKU)){
-            computer = new Computer(this.sudokuBoard);
-            computer.sudokuSolution();
-            return;
+            copySudokuBoard.printBoard();
+            value = playAgain();
+            if (!value){
+                sudokuBoard.getSudokuBoard().clear();
+                GameStart gameStart = new GameStart();
+                sudokuBoard = gameStart.startSudoku();
+                value2 = true;
+            }else {
+                value2 = false;
+            }
+        }else {
+            System.out.println("You entered a letter instead of a number or you entered a letter. Please enter the correct number.");
+            value2 = true;
         }
-        System.out.println("You entered a letter instead of a number or you entered a letter. Please enter the correct number.");
+        return value2;
     }
 
     public boolean playAgain(){
@@ -134,9 +143,5 @@ public class InsertNumber {
 
     public int getNumber() {
         return number;
-    }
-
-    public NumberDTO getNumbersDto() {
-        return new NumberDTO(getRowNumber(), getColumnNumber(), getNumber());
     }
 }

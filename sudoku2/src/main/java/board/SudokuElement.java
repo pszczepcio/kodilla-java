@@ -6,6 +6,7 @@ import java.util.List;
 public class SudokuElement {
     private final static int EMPTY = -1;
     private int value = EMPTY;
+    private boolean change = true;
     private List<Integer> probableNumbersList = new ArrayList<>();
 
 
@@ -21,7 +22,11 @@ public class SudokuElement {
         return this.value = value;
     }
 
-    public void setProbableNumbersList(List<Integer> probableNumbersList) {
-        this.probableNumbersList = probableNumbersList;
+    public boolean isChange() {
+        return change;
+    }
+
+    public void setChange(boolean change) {
+        this.change = change;
     }
 }
