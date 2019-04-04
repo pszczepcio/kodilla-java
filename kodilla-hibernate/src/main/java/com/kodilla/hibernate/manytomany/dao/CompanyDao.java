@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Scanner;
 
 @Transactional
 @Repository
@@ -17,4 +16,8 @@ public interface CompanyDao extends CrudRepository<Company, Integer> {
 
     @Query(nativeQuery = true)
     List<Company> findByLetter (@Param("NAME") String NAME);
+
+    @Query(nativeQuery = true)
+    List<Company> findBySequenceOfCharacters(@Param("NAME") String Name);
+
 }

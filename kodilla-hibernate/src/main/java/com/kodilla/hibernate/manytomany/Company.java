@@ -1,15 +1,23 @@
 package com.kodilla.hibernate.manytomany;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQuery(
-        name = "Company.findByLetter",
-        query = "SELECT * FROM companies where company_name like concat(:NAME,'%')",
-        resultClass = Company.class
-)
+@NamedNativeQueries({
+    @NamedNativeQuery(
+            name = "Company.findByLetter",
+            query = "SELECT * FROM companies where company_name like concat(:NAME,'%')",
+            resultClass = Company.class
+    ),
+        @NamedNativeQuery(
+                name = "Company.findBySequenceOfCharacters",
+                query = "SELECT * FROM companies where company_name like concat('%',:NAME,'%')",
+                resultClass = Company.class
+        )
+})
 
 @Entity
 @Table(name = "COMPANIES")
