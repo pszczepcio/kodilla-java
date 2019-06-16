@@ -1,7 +1,6 @@
 package com.kodilla.hibernate.tasklist;
 
 import com.kodilla.hibernate.task.Task;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -9,7 +8,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "TASKLISTS")
-@SpringBootApplication
 public class TaskList {
     private int id;
     private String listName;

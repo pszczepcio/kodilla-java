@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.testing.forum.collection.CollectionTestSuite" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-06-16T20:16:07" hostname="DESKTOP-F1GA1GH" time="0.005">
+  <properties/>
+  <testcase name="testOddNumbersExterminatorEmptyList" classname="com.kodilla.testing.forum.collection.CollectionTestSuite" time="0.005"/>
+  <testcase name="testOddNumbersExterminatorNormalList" classname="com.kodilla.testing.forum.collection.CollectionTestSuite" time="0.0"/>
+  <system-out><![CDATA[We check the operation of the method " exterminate " 
+The arraylist is empty
+ArrayList size after method exterminate: 0
+The arraylist is empty
+Ends of tests
+We check the operation of the method " exterminate " 
+ArrayList size after method exterminate:  10
+Ends of tests
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

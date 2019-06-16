@@ -20,7 +20,6 @@ public class SmalltoBigAndBigToSmall {
         for(int i = 0 ; i < arrayTable.length ; i++){
             for(int j = 0 ; j < smallLetters.length ; j++){
                 if(arrayTable[i] == smallLetters[j]){
-
                     textAfterChange += bigLetters[j];
                 }else if(arrayTable[i] == bigLetters[j]){
                     textAfterChange += smallLetters[j];
@@ -30,5 +29,3 @@ public class SmalltoBigAndBigToSmall {
         return textAfterChange;
     }
 }
-
-

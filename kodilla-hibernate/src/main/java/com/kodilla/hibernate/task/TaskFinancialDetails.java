@@ -1,14 +1,11 @@
 package com.kodilla.hibernate.task;
-
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "TASK_FINANCIAL")
-//@SpringBootApplication
+
 public class TaskFinancialDetails {
     private int id;
     private BigDecimal price;

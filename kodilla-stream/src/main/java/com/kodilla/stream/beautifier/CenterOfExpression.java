@@ -10,19 +10,20 @@ public class CenterOfExpression {
         stringWord = text.toCharArray();
         if(stringWord.length % 2 == 0 ) {
             for (int i = 0; i < (stringWord.length/2); i++) {
-                    result += stringWord[i];
-                }
-                for(int j = stringWord.length/2 ; j < stringWord.length ; j++){
-                    result1 += stringWord[j];
-                }
+                result += stringWord[i];
+            }
+            for(int j = stringWord.length/2 ; j < stringWord.length ; j++){
+                result1 += stringWord[j];
+            }
         }else{
-                for (int i = 0; i < (stringWord.length - 1) / 2; i++) {
-                        result += stringWord[i];
-                    }
-                    for(int j = (stringWord.length-1)/2 ; j < stringWord.length ; j++){
-                        result1 += stringWord[j];
-                    }
-                }
+            for (int i = 0; i < (stringWord.length - 1) / 2; i++) {
+                result += stringWord[i];
+            }
+            for(int j = (stringWord.length-1)/2 ; j < stringWord.length ; j++){
+                result1 += stringWord[j];
+            }
+        }
         return result + permanentText + result1;
     }
 }
+

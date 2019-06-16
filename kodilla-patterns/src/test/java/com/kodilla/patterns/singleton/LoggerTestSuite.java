@@ -15,7 +15,7 @@ public class LoggerTestSuite {
     }
 
     @Test
-    public void tesGetNameLogger(){
+    public void testGetNameLogger(){
         //Given
         //When
         String lastLog = Logger.getInstance().getLastLog();

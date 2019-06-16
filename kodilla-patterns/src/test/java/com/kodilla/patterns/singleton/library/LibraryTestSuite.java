@@ -3,15 +3,16 @@ package com.kodilla.patterns.singleton.library;
 import com.kodilla.patterns.library.Book;
 import com.kodilla.patterns.library.Library;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.LocalDate;
 import java.util.stream.IntStream;
 
 public class LibraryTestSuite {
-    private Library library;
+   private Library library;
 
-    @Test
+   @Test
     public void testToString() {
         library = new Library("Biblioteka1");
         IntStream.iterate(1, n -> n + 1)
@@ -54,6 +55,8 @@ public class LibraryTestSuite {
                 .forEach(System.out::println);
 
         System.out.println();
+
+
 
         Assert.assertEquals(5 , library.getBooks().size());
         Assert.assertEquals("Biblioteka1" , library.getName());
