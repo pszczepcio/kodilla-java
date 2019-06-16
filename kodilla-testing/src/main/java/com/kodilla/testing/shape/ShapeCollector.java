@@ -32,7 +32,7 @@ public class ShapeCollector {
     }
 
     public int showFigures(){
-        System.out.println("The size of the collection of figures is: " + collection.size());;
+        System.out.println("The size of the collection of figures is: " + collection.size());
         return collection.size();
     }
 }

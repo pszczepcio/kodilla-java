@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class OrderProcessor {
+    private Shop shop;
     private Order order;
     private boolean orderInProgress;
     private Map<String,Shop>listOfProducer = new HashMap<>();
@@ -23,13 +24,14 @@ public class OrderProcessor {
     }
 
     public boolean executionOrder(){
-       for (Map.Entry<String,Shop> entry : getListOfProducer().entrySet()){
-           if(entry.getKey().equals(order.getProducer().toUpperCase())){
-               Shop shop = getListOfProducer().get(order.getProducer().toUpperCase());
-               orderInProgress = shop.process(order.getProduct());
-               break;
-           }
-       }
+        shop = getListOfProducer().get(order.getProducer().toUpperCase());
+        if(shop != null){
+            orderInProgress = shop.process(order.getProduct());
+        }else{
+            System.out.println("We don't have this producer.");
+            return false;
+        }
+
        if(orderInProgress){
             Courier courier = new Courier(this.order);
             courier.orderCompleted();
@@ -40,6 +42,5 @@ public class OrderProcessor {
            System.out.println();
            return false;
        }
-      //  return false;
     }
 }

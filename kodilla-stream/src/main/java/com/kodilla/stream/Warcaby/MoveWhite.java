@@ -28,18 +28,18 @@ public class MoveWhite {
         nextX2 = x + 78;
 
         try {
-            for(int i = 0 ; i < white.size() ; i ++) {
-                if (nextX == white.get(i).getCenterX() && nextY == white.get(i).getCenterY()){
-                    System.out.println("Pole jest zajete przez biały pionek");
-                    break;
-                }
-            }
-            for(int i = 0 ; i < black.size() ; i++){
-                if(nextX == black.get(i).getCenterX() && nextY == black.get(i).getCenterY()){
-                    leftField = new Point2D(CheckField.fieldAxis(new Point2D(nextX-78.0, nextY-78.0), board).getX(), CheckField.fieldAxis(new Point2D(nextX-78.0, nextY-78.0), board).getY());
-                    break;
-                }
-            }
+//            for(int i = 0 ; i < white.size() ; i ++) {
+//                if (nextX == white.get(i).getCenterX() && nextY == white.get(i).getCenterY()){
+//                    System.out.println("Pole jest zajete przez biały pionek");
+//
+//                }
+//            }
+//            for(int i = 0 ; i < black.size() ; i++){
+//                if(nextX == black.get(i).getCenterX() && nextY == black.get(i).getCenterY()){
+//                    leftField = new Point2D(CheckField.fieldAxis(new Point2D(nextX-78.0, nextY-78.0), board).getX(), CheckField.fieldAxis(new Point2D(nextX-78.0, nextY-78.0), board).getY());
+//
+//                }
+//            }
             leftField = new Point2D(CheckField.fieldAxis(new Point2D(nextX, nextY), board).getX(), CheckField.fieldAxis(new Point2D(nextX, nextY), board).getY());
         }catch (NullPointerException e){
             System.out.println("jedno pole z lewej");
