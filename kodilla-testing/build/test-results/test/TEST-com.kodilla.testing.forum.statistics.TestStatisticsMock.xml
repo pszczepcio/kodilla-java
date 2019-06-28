@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.kodilla.testing.forum.statistics.TestStatisticsMock" tests="8" skipped="0" failures="0" errors="0" timestamp="2019-06-16T20:16:07" hostname="DESKTOP-F1GA1GH" time="0.119">
+<testsuite name="com.kodilla.testing.forum.statistics.TestStatisticsMock" tests="8" skipped="0" failures="0" errors="0" timestamp="2019-06-28T21:12:19" hostname="DESKTOP-F1GA1GH" time="0.358">
   <properties/>
-  <testcase name="testCommentsIsZero" classname="com.kodilla.testing.forum.statistics.TestStatisticsMock" time="0.11"/>
-  <testcase name="testcalculateAdvStatistics" classname="com.kodilla.testing.forum.statistics.TestStatisticsMock" time="0.001"/>
+  <testcase name="testCommentsIsZero" classname="com.kodilla.testing.forum.statistics.TestStatisticsMock" time="0.346"/>
+  <testcase name="testcalculateAdvStatistics" classname="com.kodilla.testing.forum.statistics.TestStatisticsMock" time="0.002"/>
   <testcase name="testPostsAreMoreThanComments" classname="com.kodilla.testing.forum.statistics.TestStatisticsMock" time="0.002"/>
-  <testcase name="testUsersAreZero" classname="com.kodilla.testing.forum.statistics.TestStatisticsMock" time="0.001"/>
+  <testcase name="testUsersAreZero" classname="com.kodilla.testing.forum.statistics.TestStatisticsMock" time="0.002"/>
   <testcase name="testPostIs1000" classname="com.kodilla.testing.forum.statistics.TestStatisticsMock" time="0.001"/>
   <testcase name="testPostIsZero" classname="com.kodilla.testing.forum.statistics.TestStatisticsMock" time="0.001"/>
   <testcase name="testFor100Users" classname="com.kodilla.testing.forum.statistics.TestStatisticsMock" time="0.001"/>
-  <testcase name="testCommentsAreMoreThanPost" classname="com.kodilla.testing.forum.statistics.TestStatisticsMock" time="0.001"/>
+  <testcase name="testCommentsAreMoreThanPost" classname="com.kodilla.testing.forum.statistics.TestStatisticsMock" time="0.002"/>
   <system-out><![CDATA[This is the beginning of tests.
 
 Preparing to execute test #1
