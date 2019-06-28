@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.kodilla.stream.forum.array.ArrayOperationsTestSuite" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-28T21:12:17" hostname="DESKTOP-F1GA1GH" time="0.022">
-  <properties/>
-  <testcase name="testGetAverage" classname="com.kodilla.stream.forum.array.ArrayOperationsTestSuite" time="0.022"/>
-  <system-out><![CDATA[2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
