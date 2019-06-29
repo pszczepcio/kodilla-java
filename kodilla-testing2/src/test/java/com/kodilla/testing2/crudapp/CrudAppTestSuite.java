@@ -70,7 +70,7 @@ public class CrudAppTestSuite {
                             theForm.findElement(By.xpath(".//button[contains(@class, \"card-creation\")]"));
                     buttonCreateCard.click();
                 });
-        Thread.sleep(5000);
+        Thread.sleep(2000);
     }
 
     private boolean checkTaskExistsInTrello(String taskName) throws InterruptedException {
@@ -89,7 +89,7 @@ public class CrudAppTestSuite {
                 .filter(aHref->aHref.findElements(By.xpath(".//div[@title=\"Kodilla Application\"]")).size()>0)
                 .forEach((aHref->aHref.click()));
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         result = driverTrello.findElements(By.xpath("//span")).stream()
                 .filter(theSpan -> theSpan.getText().contains(taskName))
@@ -101,10 +101,29 @@ public class CrudAppTestSuite {
         return result;
     }
 
+    private void delateTaskFromCrudApp(String taskName) throws InterruptedException {
+        driver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
+                .filter(anyForm -> anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]"))
+                        .getText().equals(taskName))
+                .forEach(delateButton -> delateButton.findElement(By.xpath(".//button[4]")).click());
+
+        Thread.sleep(2000);
+    }
+
+    private boolean checkExistsInCrudApp(String taskName){
+        return driver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
+                .filter(anyForm -> anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]"))
+                        .getText().equals(taskName))
+                .collect(Collectors.toList())
+                .size() == 0;
+    }
+
     @Test
     public void shouldCreatetrelloCard() throws InterruptedException {
         String taskName = createCrudAppTestTask();
         sendTestTaskToTrello(taskName);
         assertTrue(checkTaskExistsInTrello(taskName));
+        delateTaskFromCrudApp(taskName);
+        assertTrue(checkExistsInCrudApp(taskName));
     }
 }
