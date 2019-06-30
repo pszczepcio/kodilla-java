@@ -70,7 +70,9 @@ public class CrudAppTestSuite {
                             theForm.findElement(By.xpath(".//button[contains(@class, \"card-creation\")]"));
                     buttonCreateCard.click();
                 });
+        driver.switchTo().activeElement().submit();     // automatyczne zamykanie otwartych komunikatów
         Thread.sleep(2000);
+
     }
 
     private boolean checkTaskExistsInTrello(String taskName) throws InterruptedException {
